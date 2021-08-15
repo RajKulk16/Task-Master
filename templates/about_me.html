@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block head %}
+<title> Developer </title>
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <center> 
+        <img src="{{url_for('static',filename='my_formal_photo.jpeg')}}" alt="This is my photo" style="width: 400px;height: 500px;" border="5">
+    </center>
+    <p align = "center"><b>-- ABOUT ME --</b> </p>
+    
+    <p align="center">
+        Hello Everyone! My name is Raj Sanjay Kulkarni. I am just an amateur programmer trying to get the hang of new technologies and         languages. My specialization lies in Machine Learning and the languages which I currently code in are Python, C and C++. I am         trying to get grip over frontend - HTML, CSS, Java Script. I have used flask and Jinja2 template for this particular 'Task         Master', also known as 'To-Do List'. I also fancy competetive programming and am working towards it. My other hobbies include         book-reading and random net surfing.
+    </p>
+</body>
+
+{% endblock %}

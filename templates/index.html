@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title> Task Master</title>
+<style>
+    h1{
+        text-decoration: underline;
+        text-decoration-style: double;
+    }
+</style>
+<a href="/show" target="_blank">About Developer</a>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center;"> <u>Task Master</u> </h1>
+    {% if tasks|length < 1 %} <!--'|' is Jinja2 filter -->
+    <h3 style="text-align: center;">You have no tasks. Please make one.</h3>
+    <h4 style="text-align: center;">If you have no tasks to add, please take a minute to refer the "About Developer" on the top left of your screen.</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Task</th> <!-- Column-1-->
+            <th>Added</th> <!-- Column-2-->
+            <th>Actions</th> <!-- Column-3-->
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{ task.id }}">Delete</a>
+                    <br>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <div class="form">
+        <form action="/" method="POST">
+            <!--used to collect user input-->
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+</div>
+{% endblock %}
